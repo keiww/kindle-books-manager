@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    section {
+      display: flex;
+      padding: 20px;
+      user-select: none;
+    }
+    aside {
+      background: #eee;
+      margin-right: 20px;
+      padding: 20px;
+    }
+    main {
+      background: #eee;
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    li {
+      padding: 20px;
+      margin-bottom: 20px;
+      background: #ccc;
+    }
+    div {
+      padding: 20px;
+      height: 40px;
+      margin: 20px;
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <aside>
+    <p>All</p>
+    <ul>
+      <li>folder1</li>
+      <li>folder2</li>
+      <li>folder3</li>
+      <li>folder4</li>
+    </ul>
+    <p>new folder</p>
+  </aside>
+  <main>
+    <div>file1</div>
+    <div>file2</div>
+    <div>file3</div>
+    <div>file4</div>
+  </main>
+</section>
+<script type="text/javascript">
+let draggingItem = null
+const files = document.querySelectorAll('div')
+for (let i = files.length - 1; i >= 0; i--) {
+  const file = files[i]
+  file.setAttribute('draggable', true)
+  file.ondragstart = (event) => {
+    event.dataTransfer.setData("text", event.target.id);
+  }
+}
+
+const folders = document.querySelectorAll('li')
+for (let i = folders.length - 1; i >= 0; i--) {
+  const folder = folders[i]
+  folder.ondrop = (event) => {
+    event.preventDefault();
+    // console.log(event.dataTransfer)
+    var data = event.dataTransfer.getData("text")
+    console.log(event.target, data)
+  }
+  folder.ondragover = (event) => {
+    event.preventDefault()
+  }
+}
+
+</script>
+</body>
+</html>
