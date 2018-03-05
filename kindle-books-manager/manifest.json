@@ -9,7 +9,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.amazon.cn/mn/dcw/myx.html/*"],
+      "matches": ["https://www.amazon.cn/mn/dcw/myx.html/*", "https://www.amazon.co.jp/mn/dcw/myx.html/*"],
       "js": ["inject.js"]
     }
   ],
