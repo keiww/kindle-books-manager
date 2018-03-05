@@ -8,6 +8,10 @@ html, body {
   height: 100vh;
   overflow: hidden;
 }
+a {
+  text-decoration: none;
+  color: #333;
+}
 .k {
   color: #d81717;
 }
@@ -23,6 +27,7 @@ html, body {
 }
 .intro {
   white-space: nowrap;
+  margin-right: 10vw;
 }
 .name {
   font-size: 5vh;
@@ -31,28 +36,84 @@ html, body {
 .name .k {
   font-size: 8vh;
 }
+.name .beta {
+  position: relative;
+  top: -1.5em;
+  font-size: 14px;
+  padding: 5px 10px 2px;
+  background: #efefef;
+  border-radius: 2px;
+  color: #555;
+  line-height: 1em;
+  font-weight: 400;
+  font-family: Consolas, Monaco, 'Ruboto Mono', monospace;
+  user-select: none;
+}
 .desc {
   font-size: 20px;
 }
 .screenshot {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 5vw;
+  width: 900px;
+  margin-right: 10vw;
 }
 .screenshot img {
   width: 900px;
   height: auto;
 }
-.logo {
-  /*padding: 0 30vw;*/
-  flex-basis: 100%;
-  min-width: 100vw;
-  display: flex;
-  justify-content: center;
+.downloads-usage {
+  margin-right: 10vw;
+  margin-bottom: 5vw;
+  white-space: nowrap;
 }
-.logo img {
+.downloads-usage .link {
+  display: inline-block;
+  position: relative;
+  font-size: 5vh;
+  margin: 20px;
+}
+.downloads-usage .link:after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: .1em;
+  left: 0;
+  background: #d81717;
+  width: 0;
+  height: 2px;
+  transition: all .3s;
+}
+.downloads-usage .link:hover:after {
+  width: 100%;
+}
+.downloads-usage .item:nth-child(1) {
+  text-align: right;
+  margin-left: 20vw;
+}
+.downloads-usage .item:nth-child(2) {
+  text-align: left;
+}
+.downloads-usage .item.usage {
+
+}
+.guide {
+  display: flex;
+  padding-right: 20vw;
+  white-space: nowrap;
+  margin-bottom: 10vh;
+}
+.guide .logo {
+  margin-bottom: 2vh;
+}
+.guide .logo img {
   display: block;
   width: 128px;
   height: 128px;
+}
+.guide .text {
+  padding-left: 1em;
+  color: #888;
+  line-height: 2em;
+}
+.guide .text b {
+  color: #777;
 }
