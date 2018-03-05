@@ -1,7 +1,9 @@
 import { queryStringify, htmlDecode } from '@/utils'
 
 const amzAction = (action) => {
-  return fetch('https://www.amazon.cn/mn/dcw/myx/ajax-activity', {
+  const host = process.env.NODE_ENV === 'production' ? window.location.host : 'www.amazon.cn'
+  const url = `https://${host}/mn/dcw/myx/ajax-activity`
+  return fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
@@ -9,7 +11,7 @@ const amzAction = (action) => {
     },
     body: queryStringify({
       data: JSON.stringify(action),
-      csrfToken: window.csrfToken || "gDbVlLlpAZoJwDovjUIfuF7dCTt2PiZ0yupN0x4AAAAJAAAAAFqcF/lyYXcAAAAA"
+      csrfToken: window.csrfToken || process.env.TOKEN
     })
   }).then(res => {
     return res.text()
@@ -131,6 +133,24 @@ export const deleteContent = ({ asin, category }) => {
             "category": category
           }
         }
+      }
+    }
+  })
+}
+
+export const removeContentsFromCollection = ({ collectionId, asin, category }) => {
+  return amzAction({
+    "param": {
+      "RemoveContentsFromCollection": {
+        "collectionList": [ {
+          "collectionId": collectionId
+        }],
+        "contentList": [{
+          "asin": asin
+        }],
+        "categoryList": [{
+          "category": category
+        }]
       }
     }
   })

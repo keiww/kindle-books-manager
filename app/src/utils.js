@@ -1,15 +1,21 @@
-export const onReady = (callback) => {
+export const onReady = (newVueApp) => {
   let buttonIsReady = false
   let appIsReady = false
 
   const appContainer = document.createElement('div')
-  appContainer.id = 'kindle-books-manager-app'
+  appContainer.id = 'kindle-books-manager-app-container'
+  appContainer.innerHTML = '<div id="kindle-books-manager-app"></div>'
 
   const button = document.createElement('button')
-  button.setAttribute('class', 'button_myx myx-button')
+  button.setAttribute('class', 'button_myx myx-button myx-button-primary')
   button.innerHTML = '<span class="myx-button-text">Books Manager</span>'
   button.addEventListener('click', () => {
-    callback()
+    document.body.style.overflow = 'hidden'
+    if (appContainer.style.display === 'none') {
+      appContainer.style.display = 'block'
+    } else {
+      newVueApp()
+    }
   }, false)
 
   const addButton = () => {
@@ -23,6 +29,11 @@ export const onReady = (callback) => {
 
   document.addEventListener('DOMNodeInserted', addButton, false)
   document.body.appendChild(appContainer)
+
+  window.closeKindleBookManager = () => {
+    document.body.style.overflow = 'initial'
+    appContainer.style.display = 'none'
+  }
 }
 
 

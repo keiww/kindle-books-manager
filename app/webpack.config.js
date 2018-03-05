@@ -3,11 +3,9 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
-  // watch: process.env.NODE_ENV === 'staging',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, '../kindle-books-manager'),
+    filename: 'app.js'
   },
   module: {
     rules: [
@@ -52,8 +50,9 @@ module.exports = {
               'css-loader',
               'sass-loader?indentedSyntax'
             ]
-          }
+          },
           // other vue-loader options go here
+          postcss: [require('autoprefixer')()]
         }
       },
       {
@@ -62,11 +61,15 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.svg$/,
+        loader: 'vue-svg-loader'
       }
     ]
   },
@@ -89,7 +92,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        TOKEN: JSON.stringify(process.env.TOKEN)
       }
     })
   ]
@@ -101,7 +105,8 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        TOKEN: JSON.stringify(process.env.TOKEN)
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

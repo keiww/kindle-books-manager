@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'development') {
   })
 } else {
   onReady(() => {
-    new Vue({
+    window.kbm = new Vue({
       el: '#kindle-books-manager-app',
       store,
       components: { App },
