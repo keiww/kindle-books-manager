@@ -1,0 +1,58 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  font: 16px/1.6 Avenir, Helvetica Neue, sans-serif;
+  color: #333;
+  height: 100vh;
+  overflow: hidden;
+}
+.k {
+  color: #d81717;
+}
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 100vh;
+  padding: 30px;
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.intro {
+  white-space: nowrap;
+}
+.name {
+  font-size: 5vh;
+  margin: 0 0 15vh;
+}
+.name .k {
+  font-size: 8vh;
+}
+.desc {
+  font-size: 20px;
+}
+.screenshot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5vw;
+}
+.screenshot img {
+  width: 900px;
+  height: auto;
+}
+.logo {
+  /*padding: 0 30vw;*/
+  flex-basis: 100%;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.logo img {
+  display: block;
+  width: 128px;
+  height: 128px;
+}
