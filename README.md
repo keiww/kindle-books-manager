@@ -18,4 +18,4 @@ A browser extension (a desktop app) to manager your kindle books easily likes an
 
 ![](./docs/visual/screenshot.png)
 
-*Desktop app using [pywebview](https://github.com/r0x0r/pywebview) is also WIP.*
+~Desktop app using [pywebview](https://github.com/r0x0r/pywebview) is also WIP.~
