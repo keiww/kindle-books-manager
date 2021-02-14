@@ -7,7 +7,7 @@ A browser extension (a desktop app) to manager your kindle books easily likes an
 ### Usage
 
 1. Download extension and install in Google Chrome browser.
-    - [Download directly](https://github.com/keiww/kindle-books-manager/raw/master/kindle-books-manager.crx)
+    - [Download directly](https://github.com/wkei/kindle-books-manager/raw/master/kindle-books-manager.crx)
     - [Chrome Web Store](https://chrome.google.com/webstore/detail/oihlbimmojmhbgeehegboafaahpmjpfj)
 
 2. Visit Amazon website and go to `Manage Your Content and Devices` then you will see a button called `Books Manager`.
